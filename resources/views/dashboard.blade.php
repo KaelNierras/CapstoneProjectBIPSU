@@ -1,21 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-3xl font-normal underline"> Welcome to the Dashboard </h1>
-<div class="container bg-gray-600">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<div class="container mx-auto px-4">
+    <div class="flex items-center justify-center">
+        <div class="w-full max-w-md">
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="font-bold text-xl mb-2">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="px-6 py-4">
                     @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{ session('status') }}</span>
+                        </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <p class="text-gray-700 text-base">
+                        {{ __('You are logged in!') }}
+                    </p>
                 </div>
             </div>
         </div>
