@@ -11,13 +11,13 @@ class PriceController extends Controller
     public function index()
     {
         $prices = Price::all();
-        return view('admin.price.index',compact('prices'));
+        return view('pages.price.index',compact('prices'));
     }
 
     public function create()
     {
         $products = Product::all()->sortBy('name');
-        return view('admin.price.create', compact('products'));
+        return view('pages.price.create', compact('products'));
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class PriceController extends Controller
     {
         $data = Price::find($id);
         $products = Product::all()->sortBy('name');
-        return view('admin.price.edit', compact('data','products'));
+        return view('pages.price.edit', compact('data','products'));
     }
 
     public function update(Request $request, $id)

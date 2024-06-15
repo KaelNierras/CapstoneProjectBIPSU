@@ -12,14 +12,14 @@ class InventoryController extends Controller
     public function index()
     {
         $inventories = Inventory::all();
-        return view('admin.inventory.index',compact('inventories'));
+        return view('pages.inventory.index',compact('inventories'));
     }
 
     public function create()
     {
         $products = Product::all()->sortBy('name');
         $suppliers = Supplier::all()->sortBy('name');
-        return view('admin.inventory.add',compact('products','suppliers'));
+        return view('pages.inventory.create',compact('products','suppliers'));
     }
 
     public function store(Request $request)
@@ -48,7 +48,7 @@ class InventoryController extends Controller
         $data = Inventory::find($id);
         $products = Product::all()->sortBy('name');
         $suppliers = Supplier::all()->sortBy('name');
-        return view('admin.inventory.edit', compact('data','products','suppliers'));
+        return view('pages.inventory.edit', compact('data','products','suppliers'));
     }
 
     public function update(Request $request, $id)
