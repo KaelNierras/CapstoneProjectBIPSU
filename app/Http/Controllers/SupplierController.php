@@ -7,59 +7,65 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $suppliers = Supplier::all();
+        return view('admin.supplier.index',compact('suppliers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.supplier.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        try{
+            Supplier::create([
+                'name'=> $request->name,
+                'contact'=> $request->contact,
+                'email'=> $request->email,
+                'address'=> $request->address,
+            ]);
+//            success alert
+            return redirect()->back();
+
+        } catch(\Exception $e){
+//            error alert
+            return redirect()->back();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Supplier $supplier)
+    public function edit($id)
     {
-        //
+        $data = Supplier::find($id);
+        return view('admin.supplier.edit', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Supplier $supplier)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $data = Supplier::find($id);
+            $data->name = $request->input('name');
+            $data->contact = $request->input('contact');
+            $data->email = $request->input('email');
+            $data->address = $request->input('address');
+            $data->save();
+
+//            success alert
+            return redirect()->back();
+
+        } catch(\Exception $e){
+//            error alert
+            return redirect()->back();
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Supplier $supplier)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Supplier $supplier)
-    {
-        //
+        Supplier::find($id)->delete();
+//        deleted alert
+        return redirect()->back();
     }
 }

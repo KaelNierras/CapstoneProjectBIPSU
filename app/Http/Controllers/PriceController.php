@@ -3,63 +3,81 @@
 namespace App\Http\Controllers;
 
 use App\Models\Price;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PriceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $prices = Price::all();
+        return view('admin.price.index',compact('prices'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $products = Product::all()->sortBy('name');
+        return view('admin.price.create', compact('products'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $product = Product::where('id', $request->product_id);
+
+        if ($product) {
+            Price::create([
+                'product_id' => $request->product_id,
+                'amount' => $request->amount,
+            ]);
+
+//          success alert
+            return redirect()->back();
+        } else {
+//          error alert
+            return redirect()->back();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Price $price)
+    public function edit($id)
     {
-        //
+        $data = Price::find($id);
+        $products = Product::all()->sortBy('name');
+        return view('admin.price.edit', compact('data','products'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Price $price)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Price::find($id);
+        $product = Product::find($request->input('product_id'));
+
+        if ($product) {
+            $duplicateCheck = Product::where('product_id', $request->input('product_id'))
+                ->where('id', '!=', $id)
+                ->first();
+
+            if (!$duplicateCheck) {
+                $data->product_id = $request->input('product_id');
+                $data->amount = $request->input('amount');
+
+                $data->save();
+//                success alert
+                return redirect()->back();
+
+            } else {
+//                error alert
+                return redirect()->back();
+            }
+        } else {
+//                error alert
+            return redirect()->back();
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Price $price)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Price $price)
-    {
-        //
+        Price::find($id)->delete();
+//                success alert
+        return redirect()->back();
     }
 }
