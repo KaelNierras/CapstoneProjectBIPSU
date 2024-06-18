@@ -5,7 +5,12 @@
     <div class="flex items-center justify-center">
         <div class="w-full max-w-md">
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <div class="font-bold text-xl mb-2">Index Page</div>
+                <div class="flex justify-between items-center">
+                    <div class="font-bold text-xl mb-2">Index Page</div>
+                    <a href="{{ route('product.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Add Product
+                    </a>
+                </div>
 
                 <div class="px-6 py-4">
                     @if (session('status'))
@@ -14,9 +19,7 @@
                         </div>
                     @endif
 
-                    <p class="text-gray-700 text-base">
-                        Please Log In.
-                    </p>
+                 
                 </div>
             </div>
         </div>
