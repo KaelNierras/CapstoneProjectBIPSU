@@ -11,6 +11,9 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'qty',
+        'price',
+        'description'
     ];
 
     public function inventories()

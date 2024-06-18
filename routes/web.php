@@ -25,6 +25,6 @@ Route::get('/', fn() => view('index'));
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 Route::resource('suppliers', SupplierController::class);
-Route::resource('products', ProductController::class);
+Route::resource('product', ProductController::class);
 Route::resource('prices', PriceController::class);
 Route::resource('inventories', InventoryController::class);

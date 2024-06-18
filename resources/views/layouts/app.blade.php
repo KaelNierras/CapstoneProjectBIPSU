@@ -14,6 +14,12 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans bg-gray-100">
