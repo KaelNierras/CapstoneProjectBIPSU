@@ -7,8 +7,8 @@
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <div class="flex justify-between items-center">
                     <div class="font-bold text-xl mb-2">Index Page</div>
-                    <a href="{{ route('product.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Add Product
+                    <a href="{{ route('product.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Show All Products
                     </a>
                 </div>
 
