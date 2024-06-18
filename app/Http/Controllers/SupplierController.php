@@ -2,30 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class SupplierController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('pages.product.index',compact('products'));
+        $suppliers = Supplier::all();
+        return view('admin.supplier.index',compact('suppliers'));
     }
 
     public function create()
     {
-        return view('pages.product.create');
+        return view('admin.supplier.create');
     }
 
     public function store(Request $request)
     {
         // dd($request->all());
         try{
-            Product::create([
+            Supplier::create([
                 'name'=> $request->name,
+                'contact'=> $request->contact,
+                'email'=> $request->email,
+                'address'=> $request->address,
             ]);
-
 //            success alert
             return redirect()->back();
 
@@ -37,15 +39,18 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $data = Product::find($id);
-        return view('pages.product.edit', compact('data'));
+        $data = Supplier::find($id);
+        return view('admin.supplier.edit', compact('data'));
     }
 
     public function update(Request $request, $id)
     {
         try{
-            $data = Product::find($id);
+            $data = Supplier::find($id);
             $data->name = $request->input('name');
+            $data->contact = $request->input('contact');
+            $data->email = $request->input('email');
+            $data->address = $request->input('address');
             $data->save();
 
 //            success alert
@@ -59,8 +64,8 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        Product::find($id)->delete();
-//            success alert
+        Supplier::find($id)->delete();
+//        deleted alert
         return redirect()->back();
     }
 }
