@@ -18,7 +18,6 @@
                             <span class="block sm:inline">{{ session('status') }}</span>
                         </div>
                     @endif
-
                  
                 </div>
             </div>

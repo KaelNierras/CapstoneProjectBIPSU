@@ -29,7 +29,7 @@
         </div>
         <div class="mb-4">
             <label class="block text-card-foreground text-sm font-bold mb-2" for="description">Description</label>
-            <x-bladewind::textarea name='description' placeholder='Description' > {{ $product->description }} </x-bladewind::textarea>
+            <x-bladewind::textarea name='description' placeholder='Description' selected_value='{{ $product->description }}'></x-bladewind::textarea>
         </div>
         <x-bladewind::button can_submit="true">Update</x-bladewind::button>
     </form>
