@@ -3,7 +3,12 @@
 @section ('content')
 
 <div class="container max-w-md mx-auto bg-card p-6 shadow-md mt-5">
-    <h2 class="text-2xl font-bold mb-5 text-card-foreground">Create Product</h2>
+    <div class="flex justify-between pt-10">
+        <h2 class="text-2xl font-bold mb-5 text-card-foreground">Create Product</h2>
+        <a href="{{ route('product.index') }}">
+            <x-bladewind::icon name="arrow-uturn-left" class=" text-blue-500"></x-bladewind::icon>
+        </a>
+    </div>
     @if ($errors->any())
         <x-bladewind::alert  type="error" >
             <ul>

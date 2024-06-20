@@ -13,6 +13,7 @@
             <x-bladewind::button><a href="{{ route('product.create') }}">Create Product</a></x-bladewind::button>
         </div>
         <x-bladewind::table
+            celled="true"
             divider="thin">
             <x-slot name="header">
                 <th>Name</th>
@@ -28,7 +29,7 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
                             <td>
-                                <div class="flex gap-5 w-auto">
+                                <div class="flex gap-5 max-w-10">
                                     <a href="{{ route('product.edit', $product->id) }}">
                                         <x-bladewind::button class="mx-auto block" color="blue">Edit</x-bladewind::button>
                                     </a>
