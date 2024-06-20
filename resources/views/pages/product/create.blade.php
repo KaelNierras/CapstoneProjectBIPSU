@@ -5,7 +5,7 @@
 <div class="container max-w-md mx-auto bg-card p-6 shadow-md mt-5">
     <h2 class="text-2xl font-bold mb-5 text-card-foreground">Create Product</h2>
     @if ($errors->any())
-        <x-bladewind::alert type="error">
+        <x-bladewind::alert  type="error" >
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

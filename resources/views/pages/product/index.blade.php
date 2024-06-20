@@ -30,12 +30,15 @@
                             <td>
                                 <div class="flex gap-5 w-auto">
                                     <a href="{{ route('product.edit', $product->id) }}">
-                                        <x-bladewind::button.circle icon="pencil-square"></x-bladewind::button.circle>
+                                        <x-bladewind::button class="mx-auto block" color="blue">Edit</x-bladewind::button>
                                     </a>
                                     <form method="post" action="{{ route('product.destroy', $product->id) }}">
                                         @csrf
                                         @method('delete')
-                                        <x-bladewind::button.circle can_submit="true" color="red" icon="trash" />
+                                        <x-bladewind::button
+                                        can_submit="true"
+                                        class="mx-auto block"
+                                        color="red">Delete</x-bladewind::button>
                                     </form>
                                 </div>
                             </td>

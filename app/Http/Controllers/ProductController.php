@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
+        //($request->all());
         $data = $request->validate([
             'name' => 'required',
             'qty' => 'required|numeric',
@@ -51,9 +51,8 @@ class ProductController extends Controller
 
     }
 
-    public function destroy(Product $product)
-    {
+    public function destroy(Product $product){
         $product->delete();
-        return redirect(route('product.index'))->with('success', 'Product deleted Successfully');
+        return redirect(route('product.index'))->with('success', 'Product deleted Succesffully');
     }
 }
