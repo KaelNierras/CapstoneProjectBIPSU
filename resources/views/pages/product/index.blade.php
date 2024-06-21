@@ -3,13 +3,13 @@
 @section ('content')
     <div class="container mx-auto p-4 rounded-lg shadow dark:bg-gray-200 dark:border-gray-700">
         <h1 class="text-3xl font-bold text-center py-2">Products</h1>
-        <div class="absolute top-20 right-16">
+        <div class="absolute right-0 mr-8">
             @if (session('success'))
                 @include('components.alert')
             @endif
         </div>
         <div class="py-2">
-            <x-bladewind::button><a href="{{ route('product.create') }}">Create Product</a></x-bladewind::button>
+            <x-bladewind::button><a href="{{ route('product.create') }}"><i class="fas fa-plus"></i></a></x-bladewind::button>
         </div>
         <x-bladewind::table
             celled="true"
@@ -28,9 +28,9 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
                             <td>
-                                <div class="flex gap-5 max-w-10">
+                                <div class="flex gap-2 max-w-10">
                                     <a href="{{ route('product.edit', $product->id) }}">
-                                        <x-bladewind::button class="mx-auto block" color="blue">Edit</x-bladewind::button>
+                                        <x-bladewind::button class="mx-auto block" color="blue"><i class="fas fa-edit"></i></x-bladewind::button>
                                     </a>
                                     <form method="post" action="{{ route('product.destroy', $product->id) }}">
                                         @csrf
@@ -38,7 +38,7 @@
                                         <x-bladewind::button
                                         can_submit="true"
                                         class="mx-auto block"
-                                        color="red">Delete</x-bladewind::button>
+                                        color="red"><i class="fas fa-trash"></i></x-bladewind::button>
                                     </form>
                                 </div>
                             </td>
