@@ -28,7 +28,7 @@
         @auth
         @include('components.sidebar')
         @endauth
-        <main class="my-4 @auth sm:ml-64 @endauth p-4">
+        <main class="@auth sm:ml-64 @endauth p-4">
             @yield('content')
         </main>
     </div>
