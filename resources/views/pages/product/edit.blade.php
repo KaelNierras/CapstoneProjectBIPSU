@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container max-w-md mx-auto bg-card p-6 shadow-md mt-5">
-        <div class="flex justify-between pt-10">
+        <div class="flex justify-between">
             <h2 class="text-2xl font-bold mb-5 text-card-foreground">Edit Product</h2>
             <a href="{{ route('product.index') }}">
                 <x-bladewind::icon name="arrow-uturn-left" class=" text-blue-500"></x-bladewind::icon>

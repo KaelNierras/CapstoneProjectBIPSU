@@ -13,8 +13,10 @@
             <x-bladewind::button><a href="{{ route('product.create') }}">Create Product</a></x-bladewind::button>
         </div>
         <x-bladewind::table
-            celled="true"
-            divider="thin">
+            searchable="true"
+            has_border="true"
+            search_placeholder="Find products by name..."
+            >
             <x-slot name="header">
                 <th>Name</th>
                 <th>Quantity</th>
@@ -33,14 +35,23 @@
                                     <a href="{{ route('product.edit', $product->id) }}">
                                         <x-bladewind::button class="mx-auto block" color="blue">Edit</x-bladewind::button>
                                     </a>
-                                    <form method="post" action="{{ route('product.destroy', $product->id) }}">
+                                    <x-bladewind::button onclick="showModal('small-modal')">
+                                        Small Modal
+                                    </x-bladewind::button>
+                                    <x-bladewind::modal
+                                        size="small"
+                                        title="Small Modal"
+                                        name="small-modal">
+                                        I am the smallest in the modal family. Don't hate.
+                                    </x-bladewind::modal>
+                                    {{-- <form method="post" action="{{ route('product.destroy', $product->id) }}">
                                         @csrf
                                         @method('delete')
                                         <x-bladewind::button
                                         can_submit="true"
                                         class="mx-auto block"
                                         color="red">Delete</x-bladewind::button>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </td>
                         </tr>

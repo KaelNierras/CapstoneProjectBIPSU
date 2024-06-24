@@ -22,7 +22,6 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', fn() => view('index'));
-
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
     Route::resource('suppliers', SupplierController::class);

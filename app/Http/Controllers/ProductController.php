@@ -9,6 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
+
         $products = Product::all();
         return view('pages.product.index',compact('products'));
     }
@@ -34,7 +35,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('pages.product.edit', ['product' => $product]);
+        return view('pages.product.edit', compact('product'));
     }
 
     public function update(Product $product, Request $request)
